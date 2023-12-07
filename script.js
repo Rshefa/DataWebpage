@@ -1,15 +1,32 @@
-fetch('https://jsonplaceholder.typicode.com/albums')
+fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
-      .then(json => console.log(json))
-
-      const myList = document.getElementById("list");
-      function data(obj){
-        const section = document.querySelector("sector");
-        const album = obj.json
-        for(const user of userId){
-            const usernum = document.createElement("p");
-            const id = document.createElement("p");
-            const title = document.createElement("p");
+      .then(data =>{
+        console.log(data);
+       const users = data.map(users =>{
+          return `
+            <div>
+              <h2> ${users.name}</h2>
+              </div>
+             `
+       })
+             document.getElementById('users').innerHTML = users.join(" ");   
             
-        }
-      }
+      })
+
+      fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(info =>{
+        console.log(info);
+       const post = info.map(post =>{
+          return `
+            <div>
+              <h2> ${post.body}</h2>
+              </div>
+             `
+       })
+             document.getElementById('post').innerHTML = users.join(" ");   
+            
+      })
+      
+      
+    
